@@ -1,5 +1,5 @@
 import { open } from 'react-native-quick-sqlite';
-import { openDatabase } from '../../server/db'; // Jika kamu tetap simpan instance di sana
+import { openDatabase } from '../../server/db';
 
 interface User {
   id?: number;
@@ -15,6 +15,15 @@ export const insertUser = async (user: User) => {
   ]);
 };
 
+export const getUsers = async (): Promise<User[]> => {
+  const db = await openDatabase();
+  const result = await db.execute('SELECT * FROM users');
+
+  return Array.from({ length: result.rows.length }, (_, i) =>
+    result.rows.item(i),
+  );
+};
+
 // export const getUsers = async (): Promise<User[]> => {
 //   const db = await openDatabase();
 //   const result = await db.execute('SELECT * FROM users');
@@ -26,12 +35,3 @@ export const insertUser = async (user: User) => {
 
 //   return users;
 // };
-
-export const getUsers = async (): Promise<User[]> => {
-  const db = await openDatabase();
-  const result = await db.execute('SELECT * FROM users');
-
-  return Array.from({ length: result.rows.length }, (_, i) =>
-    result.rows.item(i),
-  );
-};

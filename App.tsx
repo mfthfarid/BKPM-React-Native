@@ -4,10 +4,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createTables } from './src/server/db';
 import { insertUser, getUsers } from './src/api/services/userService';
+import { PaperProvider } from 'react-native-paper';
+// import { customTheme } from './path/to/your/theme';
 
 import HomeScreen from './src/screens/HomeScreen';
 import AsyncScreen from './src/screens/AsyncStorageScreen';
 import SqlLiteScreen from './src/screens/SqlLiteScreen';
+import PaperScreen from './src/screens/PaperScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +49,13 @@ export default function App() {
           component={SqlLiteScreen}
           options={{
             title: 'SQLite Demo',
+          }}
+        />
+        <Stack.Screen
+          name="Paper"
+          component={PaperScreen}
+          options={{
+            title: 'Paper Demo',
           }}
         />
       </Stack.Navigator>
