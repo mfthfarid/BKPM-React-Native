@@ -29,6 +29,15 @@ const HomeScreen = ({ navigation }: any) => {
       screen: 'SqlLite',
       color: '#e74c3c',
     },
+    {
+      id: 3,
+      title: 'Paper',
+      subtitle: 'Cloud storage',
+      description: 'Great for storing large data like documents',
+      icon: '📦',
+      screen: 'Paper',
+      color: '#f1c40f',
+    },
   ];
 
   const handleNavigation = (screen: string) => {
